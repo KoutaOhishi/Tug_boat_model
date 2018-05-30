@@ -161,7 +161,7 @@
       </visual>
     </link>
 
-    <!--<link name="propeller">
+    <link name="propeller">
       <pose>0 6 0 0 0 -1.57</pose>
 
       <collision name="propeller">
@@ -185,7 +185,7 @@
       <visual name="propeller">
         <geometry>
           <mesh>
-            <uri>model://floating_boat/mesh/PROPELLER.dae</uri>
+            <uri>model://tug_boat/mesh/PROPELLER.dae</uri>
             <scale>10 10 10</scale>
           </mesh>
 
@@ -203,7 +203,7 @@
           </inertia>
         </inertial>
       </visual>
-    </link> -->
+    </link>
 
 
     <!-- JOINT -->
@@ -249,11 +249,11 @@
       <child>back_line</child>
     </joint>
 
-    <!--<joint name="body2propeller" type="revolute">
+    <joint name="body2propeller" type="revolute">
       <pose>0 0 0 0 0 1.57</pose>
       <parent>body</parent>
       <child>propeller</child>
-    </joint>-->
+    </joint>
 
     <!-- PLUGIN -->
     <plugin name="BuoyancyPlugin" filename="libbuoyancy_gazebo_plugin.so">
@@ -304,18 +304,18 @@
       </link>
     </plugin>
 
-    <plugin name="WindPlugin" filename="libusv_gazebo_wind_plugin.so">
+    <!--<plugin name="WindPlugin" filename="libusv_gazebo_wind_plugin.so">
     	<bodyName>body</bodyName>
     	<wind_velocity_vector>10 0 0</wind_velocity_vector>
     	<wind_coeff_vector>0.5 0.5 0.33 </wind_coeff_vector>
-    </plugin>
+    </plugin>-->
 
     <plugin name="ThrusterPlugin" filename="libusv_gazebo_thrust_plugin.so">
       <bodyName>body</bodyName>
       <mappingType>1</mappingType> <!-- 0 is liner, 1 is nonliner -->
-      <boatArea>2.2</boatArea>
-    	<boatWidth>2.4</boatWidth>
-    	<boatLength>4.9</boatLength>
+      <boatArea>96.0</boatArea>
+    	<boatWidth>8.0</boatWidth>
+    	<boatLength>12.0</boatLength>
     	<thrustOffsetZ>-0.04</thrustOffsetZ>
     	<!-- Thrust specification -->
     	<maxCmd>1.0</maxCmd>
