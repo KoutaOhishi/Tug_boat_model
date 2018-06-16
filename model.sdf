@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <sdf version='1.4'>
   <model name="tug_boat">
-    <pose>0 0 0 0 0 0</pose>
+    <pose>0 0 0 0 0 1.57</pose>
     <static>false</static>
 
 
@@ -12,13 +12,13 @@
 
       <collision name="body">
         <geometry>
-          <box><size>8.0 12.0 1.0</size></box>
+          <box><size>12.0 8.0 1.0</size></box>
         </geometry>
       </collision>
 
       <visual name="body">
         <geometry>
-          <box><size>8.0 12.0 1.0</size></box>
+          <box><size>12.0 8.0 1.0</size></box>
         </geometry>
 
         <material>
@@ -32,7 +32,7 @@
     </link>
 
     <link name="right_floater">
-      <pose>-3 0 -1 1.57 0 0</pose>
+      <pose>0 -3 -1 0 1.57 0</pose>
       <collision name="right_floater">
         <geometry>
           <cylinder>
@@ -58,7 +58,7 @@
     </link>
 
     <link name="left_floater">
-      <pose>3 0 -1 1.57 0 0</pose>
+      <pose>0 3 -1 0 1.57 0</pose>
       <collision name="left_floater">
         <geometry>
           <cylinder>
@@ -86,81 +86,82 @@
 
       <collision name="center_line">
         <geometry>
-          <box><size>0.1 11.9 0.1</size></box>
+          <box><size>11.9 0.1 0.1</size></box>
         </geometry>
       </collision>
 
       <visual name="center_line">
         <geometry>
-          <box><size>0.1 11.9 0.1</size></box>
+          <box><size>11.9 0.1 0.1</size></box>
         </geometry>
       </visual>
     </link>
 
     <link name="left_line">
-      <pose>-3.9 0 0.5 0 0 0</pose>
+      <pose>0 -3.9 0.5 0 0 0</pose>
 
       <collision name="left_line">
         <geometry>
-          <box><size>0.1 11.9 0.1</size></box>
+          <box><size>11.9 0.1 0.1</size></box>
         </geometry>
       </collision>
 
       <visual name="left_line">
         <geometry>
-          <box><size>0.1 11.9 0.1</size></box>
+          <box><size>11.9 0.1 0.1</size></box>
         </geometry>
       </visual>
     </link>
 
     <link name="right_line">
-      <pose>3.9 0 0.5 0 0 0</pose>
+      <pose>0 3.9 0.5 0 0 0</pose>
 
       <collision name="right_line">
         <geometry>
-          <box><size>0.1 11.9 0.1</size></box>
+          <box><size>11.9 0.1 0.1</size></box>
         </geometry>
       </collision>
 
       <visual name="right_line">
         <geometry>
-          <box><size>0.1 11.9 0.1</size></box>
+          <box><size>11.9 0.1 0.1</size></box>
         </geometry>
       </visual>
     </link>
 
     <link name="front_line">
-      <pose>0 5.9 0.5 1.57 0 0</pose>
+      <pose>5.9 0 0.5 0 0 0</pose>
 
       <collision name="front_line">
         <geometry>
-          <box><size>7.9 0.1 0.1</size></box>
+          <box><size>0.1 7.9 0.1</size></box>
         </geometry>
       </collision>
 
       <visual name="front_line">
         <geometry>
-          <box><size>7.9 0.1 0.1</size></box>
+          <box><size>0.1 7.9 0.1</size></box>
         </geometry>
       </visual>
     </link>
 
     <link name="back_line">
-      <pose>0 -5.9 0.5 1.57 0 0</pose>
+      <pose>-5.9 0 0.5 0 0 0</pose>
 
       <collision name="back_line">
         <geometry>
-          <box><size>7.9 0.1 0.1</size></box>
+          <box><size>0.1 7.9 0.1</size></box>
         </geometry>
       </collision>
 
       <visual name="back_line">
         <geometry>
-          <box><size>7.9 0.1 0.1</size></box>
+          <box><size>0.1 7.9 0.1</size></box>
         </geometry>
       </visual>
     </link>
 
+<!--
     <link name="propeller">
       <pose>0 6 0 0 0 -1.57</pose>
 
@@ -181,6 +182,7 @@
           </ode>
         </friction>
       </surface>
+
 
       <visual name="propeller">
         <geometry>
@@ -204,7 +206,7 @@
         </inertial>
       </visual>
     </link>
-
+-->
 
     <!-- JOINT -->
     <joint name="body2right_floater" type="fixed">
@@ -249,12 +251,12 @@
       <child>back_line</child>
     </joint>
 
-    <joint name="body2propeller" type="revolute">
+<!--    <joint name="body2propeller" type="revolute">
       <pose>0 0 0 0 0 1.57</pose>
       <parent>body</parent>
       <child>propeller</child>
     </joint>
-
+-->
     <!-- PLUGIN -->
     <plugin name="BuoyancyPlugin" filename="libbuoyancy_gazebo_plugin.so">
       <fluid_density>1000</fluid_density>
@@ -316,10 +318,10 @@
       <boatArea>96.0</boatArea>
     	<boatWidth>8.0</boatWidth>
     	<boatLength>12.0</boatLength>
-    	<thrustOffsetZ>-0.04</thrustOffsetZ>
+    	<thrustOffsetZ>-0.5</thrustOffsetZ>
     	<!-- Thrust specification -->
     	<maxCmd>1.0</maxCmd>
-    	<maxForceFwd>250.0</maxForceFwd>
+    	<maxForceFwd>100.0</maxForceFwd>
     	<maxForceRev>-100.0</maxForceRev>
     	<cmdTimeout>1.0</cmdTimeout>
     </plugin>
